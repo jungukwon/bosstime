@@ -1311,6 +1311,10 @@ while True:
 				await PlaySound(voice_client1, './sound/뮨.mp3')
 			if message.content == '!냠냠' :
 				await PlaySound(voice_client1, './sound/냠냠.mp3')
+			if message.content == '!왓' :
+				await PlaySound(voice_client1, './sound/왓.mp3')
+			if message.content == '!왓1' :
+				await PlaySound(voice_client1, './sound/왓1.mp3')
 			if message.content == '!TJ' or message.content == '!tj' :
 				resultTJ = random.randrange(1,9)
 				await PlaySound(voice_client1, './sound/TJ' + str(resultTJ) +'.mp3')
