@@ -1365,7 +1365,7 @@ while True:
 				command_list += command[16] + '\n'     #!리젠
 				command_list += command[17] + '\n'     #!현재시간
 				command_list += command[18] + '\n'     #!공지
-				command_list += command[18] + ' [공지내용]\n'     #!적대
+				command_list += command[18] + ' [파티내용]\n'     #!파티
 				command_list += command[18] + '삭제\n'     #!적대
 				command_list += command[19] + ' [할말]\n\n'     #!상태
 				command_list += command[20] + '\n'     #보스탐
@@ -1994,7 +1994,7 @@ while True:
 				await client.change_presence(status=discord.Status.dnd, activity=discord.Game(name=sayMessage, type=1), afk = False)
 				await client.get_channel(channel).send( '< 상태메세지 변경완료 >', tts=False)
 
-			################ 적대확인, 입력 및 삭제 ################ 
+			################ 파티확인, 입력 및 삭제 ################ 
 
 			if message.content == command[18]:
 				notice_initdata = repo.get_contents("notice.ini")
@@ -2007,7 +2007,7 @@ while True:
 							)
 				else :
 					embed = discord.Embed(
-							description= '등록된 적대가 없습니다.',
+							description= '등록된 파티가 없습니다.',
 							color=0xff00ff
 							)
 				await msg.channel.send(embed=embed, tts=False)
@@ -2017,12 +2017,12 @@ while True:
 				sayMessage = tmp_sayMessage[len(command[18])+1:]
 				contents = repo.get_contents("notice.ini")
 				repo.update_file(contents.path, "notice 등록", sayMessage, contents.sha)
-				await client.get_channel(channel).send( '< 적대 등록완료 >', tts=False)
+				await client.get_channel(channel).send( '< 파티 등록완료 >', tts=False)
 			
 			if message.content == command[18] + '삭제':
 				contents = repo.get_contents("notice.ini")
 				repo.update_file(contents.path, "notice 삭제", '', contents.sha)
-				await client.get_channel(channel).send( '< 적대 삭제완료 >', tts=False)
+				await client.get_channel(channel).send( '<  삭제완료 >', tts=False)
 
 
 			################ 정산확인 ################ 
