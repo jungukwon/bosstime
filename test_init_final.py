@@ -1378,6 +1378,9 @@ while True:
 				command_list += command[22] + '\n'     #!파티2
 				command_list += command[22] + ' [파티내용]\n'     #!파티2
 				command_list += command[22] + '삭제\n'     #!파티2
+				command_list += command[23] + '\n'     #!대기자
+				command_list += command[23] + ' [파티내용]\n'     #!대기자
+				command_list += command[23] + '삭제\n'     #!대기자
 				embed = discord.Embed(
 						title = "----- 명령어 -----",
 						description= '```' + command_list + '```',
@@ -2050,11 +2053,41 @@ while True:
 				sayMessage = tmp_sayMessage[len(command[22])+1:]
 				contents = repo.get_contents("notice2.ini")
 				repo.update_file(contents.path, "notice2 등록", sayMessage, contents.sha)
-				await client.get_channel(channel).send( '< 파티 등록완료 >', tts=False)
+				await client.get_channel(channel).send( '< 파티2 등록완료 >', tts=False)
 			
 			if message.content == command[22] + '삭제':
 				contents = repo.get_contents("notice2.ini")
 				repo.update_file(contents.path, "notice2 삭제", '', contents.sha)
+				await client.get_channel(channel).send( '<  삭제완료 >', tts=False)
+				
+			################ 대기자확인, 입력 및 삭제 ################ 
+			
+			if message.content == command[23]:
+				notice3_initdata = repo.get_contents("notice3.ini")
+				notice3 = base64.b64decode(notice3_initdata.content)
+				notice3 = notice3.decode('utf-8')
+				if notice3 != '' :
+					embed = discord.Embed(
+							description= str(notice3),
+							color=0xff00ff
+							)
+				else :
+					embed = discord.Embed(
+							description= '등록된 대기자가 없습니다.',
+							color=0xff00ff
+							)
+				await msg.channel.send(embed=embed, tts=False)
+
+			if message.content.startswith(command[23] + ' '):
+				tmp_sayMessage = message.content
+				sayMessage = tmp_sayMessage[len(command[23])+1:]
+				contents = repo.get_contents("notice3.ini")
+				repo.update_file(contents.path, "notice3 대기자", sayMessage, contents.sha)
+				await client.get_channel(channel).send( '< 대기자 등록완료 >', tts=False)
+			
+			if message.content == command[23] + '삭제':
+				contents = repo.get_contents("notice3.ini")
+				repo.update_file(contents.path, "notice3 삭제", '', contents.sha)
 				await client.get_channel(channel).send( '<  삭제완료 >', tts=False)
 
 			################ 정산확인 ################ 
