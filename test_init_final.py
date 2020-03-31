@@ -1364,9 +1364,9 @@ while True:
 				command_list += command[15] + ' [할말]\n'     #!v
 				command_list += command[16] + '\n'     #!리젠
 				command_list += command[17] + '\n'     #!현재시간
-				command_list += command[18] + '\n'     #!공지
+				command_list += command[18] + '\n'     #!파티
 				command_list += command[18] + ' [파티내용]\n'     #!파티
-				command_list += command[18] + '삭제\n'     #!적대
+				command_list += command[18] + '삭제\n'     #!파티
 				command_list += command[19] + ' [할말]\n\n'     #!상태
 				command_list += command[20] + '\n'     #보스탐
 				command_list += command[21] + '\n'     #!보스탐
@@ -1375,6 +1375,9 @@ while True:
 				command_list += '[보스명]예상 또는 [보스명]예상 0000, 00:00\n' 
 				command_list += '[보스명]삭제\n'     
 				command_list += '[보스명]메모 [할말]\n'
+				command_list += command[22] + '\n'     #!파티2
+				command_list += command[22] + ' [파티내용]\n'     #!파티2
+				command_list += command[22] + '삭제\n'     #!파티2
 				embed = discord.Embed(
 						title = "----- 명령어 -----",
 						description= '```' + command_list + '```',
@@ -2024,6 +2027,35 @@ while True:
 				repo.update_file(contents.path, "notice 삭제", '', contents.sha)
 				await client.get_channel(channel).send( '<  삭제완료 >', tts=False)
 
+			################ 파티2확인, 입력 및 삭제 ################ 	
+				
+			if message.content == command[22]:
+				notice2_initdata = repo.get_contents("notice2.ini")
+				notice2 = base64.b64decode(notice2_initdata.content)
+				notice2 = notice2.decode('utf-8')
+				if notice2 != '' :
+					embed = discord.Embed(
+							description= str(notice2),
+							color=0xff00ff
+							)
+				else :
+					embed = discord.Embed(
+							description= '등록된 파티가 없습니다.',
+							color=0xff00ff
+							)
+				await msg.channel.send(embed=embed, tts=False)
+
+			if message.content.startswith(command[22] + ' '):
+				tmp_sayMessage = message.content
+				sayMessage = tmp_sayMessage[len(command[22])+1:]
+				contents = repo.get_contents("notice2.ini")
+				repo.update_file(contents.path, "notice2 등록", sayMessage, contents.sha)
+				await client.get_channel(channel).send( '< 파티 등록완료 >', tts=False)
+			
+			if message.content == command[22] + '삭제':
+				contents = repo.get_contents("notice2.ini")
+				repo.update_file(contents.path, "notice2 삭제", '', contents.sha)
+				await client.get_channel(channel).send( '<  삭제완료 >', tts=False)
 
 			################ 정산확인 ################ 
 
