@@ -985,7 +985,7 @@ while True:
 			command_list += ','.join(command[18]) + '\n'     #!파티
 			command_list += ','.join(command[18]) + ' [파티List]\n'     #!파티
 			command_list += ','.join(command[26]) + '\n'     #!파티삭제
-			command_list += ','.join(command[19]) + ' [할말]\n\n'     #!상태
+			command_list += ','.join(command[19]) + ' [할말]\n'     #!상태
 			command_list += ','.join(command[20]) + '\n'     #보스탐
 			command_list += ','.join(command[21]) + '\n'     #!보스탐
 			command_list += '[보스명]컷 또는 [보스명]컷 0000, 00:00\n'     
@@ -995,10 +995,10 @@ while True:
 			command_list += '[보스명]메모 [할말]\n'
 			command_list += ','.join(command[27]) + '\n'     #!파티2
 			command_list += ','.join(command[27]) + ' [파티2List]\n'     #!파티2
-			command_list += ','.join(command[28]) + '삭제\n'     #!파티2
+			command_list += ','.join(command[28]) + '\n'     #!파티2
 			command_list += ','.join(command[29]) + '\n'     #!대기자
 			command_list += ','.join(command[29]) + ' [대기List]\n'     #!대기자
-			command_list += ','.join(command[30]) + '삭제\n'     #!대기자
+			command_list += ','.join(command[30]) + '\n'     #!대기자
 			embed = discord.Embed(
 					title = "----- 명령어 -----",
 					description= '```' + command_list + '```',
