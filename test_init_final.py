@@ -983,7 +983,7 @@ while True:
 			command_list += ','.join(command[23]) + ' [아이디]\n'     #!킬
 			command_list += ','.join(command[24]) + ' [아이디]\n'     #!킬삭제
 			command_list += ','.join(command[18]) + '\n'     #!파티
-			command_list += ','.join(command[18]) + ' [공지내용]\n'     #!파티
+			command_list += ','.join(command[18]) + ' [파티List]\n'     #!파티
 			command_list += ','.join(command[26]) + '\n'     #!파티삭제
 			command_list += ','.join(command[19]) + ' [할말]\n\n'     #!상태
 			command_list += ','.join(command[20]) + '\n'     #보스탐
@@ -994,10 +994,10 @@ while True:
 			command_list += '[보스명]삭제\n'     
 			command_list += '[보스명]메모 [할말]\n'
 			command_list += ','.join(command[27]) + '\n'     #!파티2
-			command_list += ','.join(command[27]) + ' [파티내용]\n'     #!파티2
+			command_list += ','.join(command[27]) + ' [파티2List]\n'     #!파티2
 			command_list += ','.join(command[28]) + '삭제\n'     #!파티2
 			command_list += ','.join(command[29]) + '\n'     #!대기자
-			command_list += ','.join(command[29]) + ' [파티내용]\n'     #!대기자
+			command_list += ','.join(command[29]) + ' [대기List]\n'     #!대기자
 			command_list += ','.join(command[30]) + '삭제\n'     #!대기자
 			embed = discord.Embed(
 					title = "----- 명령어 -----",
@@ -1440,7 +1440,7 @@ while True:
 			race_val = []
 			random_pos = []
 			racing_result = []
-			output = ':camera: :camera: :camera: 신나는 레이싱! :camera: :camera: :camera:\n'
+			output = ':camera: :camera: :camera: 동물 ! :camera: :camera: :camera:\n'
 			racing_unit = [':giraffe:', ':elephant:', ':tiger2:', ':hippopotamus:', ':crocodile:',':leopard:',':ox:', ':sheep:', ':pig2:',':dromedary_camel:',':dragon:',':rabbit2:'] #동물스킨
 			#racing_unit = [':red_car:', ':taxi:', ':bus:', ':trolleybus:', ':race_car:', ':police_car:', ':ambulance:', ':fire_engine:', ':minibus:', ':truck:', ':articulated_lorry:', ':tractor:', ':scooter:', ':manual_wheelchair:', ':motor_scooter:', ':auto_rickshaw:', ':blue_car:', ':bike:', ':helicopter:', ':steam_locomotive:']  #탈것스킨
 			random.shuffle(racing_unit) 
