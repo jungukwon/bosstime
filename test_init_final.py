@@ -2547,7 +2547,7 @@ while True:
 
 				################ 명존쎄 ################ 
 				for command7 in command[7] :	
-					if message.content == command7.strip():
+					if message.content == command7.strip() :
 						await client.get_channel(channel).send( '< 보탐봇 명치 맞고 숨 고르기 중! 잠시만요! >', tts=False)
 						for i in range(bossNum):
 							if bossMungFlag[i] == True:
