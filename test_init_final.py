@@ -2577,3 +2577,4 @@ while True:
 
 	print("Bot restarting")
 	client = discord.Client(loop=client.loop)
+	client = commands.Bot(command_prefix=commands.when_mentioned_or(""), description='일상디코봇')
